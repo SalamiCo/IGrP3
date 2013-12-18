@@ -19,16 +19,19 @@ Triangle::Triangle(PV2D p1, PV2D p2, PV2D p3){
 	this->p3 = p3;
 
 	// Normal vectors normalized
-	v1.setVectorX(p1.getPointX() - p2.getPointX());
-	v1.setVectorY(p1.getPointY() - p2.getPointY());
+	v1.setX(p1.getX() - p2.getX());
+	v1.setY(p1.getY() - p2.getY());
+	v1.setH(0);
 	this->n1 = v1.normalVector().normalizeVector();
 
-	v2.setVectorX(p2.getPointX() - p3.getPointX());
-	v2.setVectorY(p2.getPointY() - p3.getPointY());
+	v2.setX(p2.getX() - p3.getX());
+	v2.setY(p2.getY() - p3.getY());
+	v2.setH(0);
 	this->n2 = v2.normalVector().normalizeVector();
 
-	v3.setVectorX(p3.getPointX() - p1.getPointX());
-	v3.setVectorY(p3.getPointY() - p1.getPointY());
+	v3.setX(p3.getX() - p1.getX());
+	v3.setY(p3.getY() - p1.getY());
+	v3.setH(0);
 	this->n3 = v3.normalVector().normalizeVector();
 
 	// Center
@@ -85,9 +88,9 @@ void Triangle::drawTriangle(PV2D p1, PV2D p2, PV2D p3){
 
 	glColor3f(0.38, 0.19, 0.0);
 	glBegin(GL_TRIANGLES);
-		glVertex2f(p1.getPointX(), p1.getPointY());
-		glVertex2f(p2.getPointX(), p2.getPointY());
-		glVertex2f(p3.getPointX(), p3.getPointY());
+		glVertex2f(p1.getX(), p1.getY());
+		glVertex2f(p2.getX(), p2.getY());
+		glVertex2f(p3.getX(), p3.getY());
 	glEnd();
 } 
 
@@ -104,8 +107,9 @@ bool Triangle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
 	//Compute the vectors dist, proj and sign
 	for(int i=0; i<3; i++){
 		PV2D w;
-		w.setVectorX(this->getP(i).getPointX() - p.getPointX());
-		w.setVectorY(this->getP(i).getPointY() - p.getPointY());
+		w.setX(this->getP(i).getX() - p.getX());
+		w.setY(this->getP(i).getY() - p.getY());
+		w.setH(0);
 		dist[i] = w.dot(v.normalVector());
 		proj[i] = w.dot(v);
 		if(dist[i] > 0) sign[i] = 1;
@@ -162,8 +166,9 @@ int Triangle::minimum(double hit[], int nHits){
 PV2D Triangle::vectorFromCenter(PV2D p){
 	PV2D vector;
 
-	vector.setVectorX(p.getPointX() - center.getPointX());
-	vector.setVectorY(p.getPointY() - center.getPointY());
+	vector.setX(p.getX() - center.getX());
+	vector.setY(p.getY() - center.getY());
+	vector.setH(0);
 
 	return vector;
 }
@@ -172,11 +177,12 @@ PV2D Triangle::triangleCenter(PV2D p1, PV2D p2, PV2D p3){
 	PV2D center;
 	GLfloat sumX, sumY;
 
-	sumX = (p1.getPointX() + p2.getPointX() + p3.getPointX())/3;
-	sumY = (p1.getPointY() + p2.getPointY() + p3.getPointY())/3;
+	sumX = (p1.getX() + p2.getX() + p3.getX())/3;
+	sumY = (p1.getY() + p2.getY() + p3.getY())/3;
 
-	center.setPointX(sumX);
-	center.setPointY(sumY);
+	center.setX(sumX);
+	center.setY(sumY);
+	center.setH(0);
 
 	return center;
 }

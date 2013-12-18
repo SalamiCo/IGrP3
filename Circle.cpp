@@ -6,7 +6,7 @@
 Circle::Circle(){
 	Pencil pen;
 	// Center
-	this->center = PV2D(-50, 100);
+	this->center = PV2D(-50, 100, 1);
 	// Radius
 	this->radius = 30;
 	this->radius2 = radius*radius;
@@ -14,7 +14,7 @@ Circle::Circle(){
 	numSides = 20;
 	GLfloat edge = 2 * radius * sin(0.157079);
 
-	PV2D p1 = PV2D(this->center.getPointX()+edge/2, this->center.getPointY()-radius);
+	PV2D p1 = PV2D(this->center.getX()+edge/2, this->center.getY()-radius, 1);
 
 	// Generate the circle
 	vertex.push_back(p1);
@@ -42,7 +42,7 @@ Circle::Circle(PV2D center, GLfloat radius){
 	numSides = 20;
 	GLfloat edge = 2 * radius * sin(0.157079);
 
-	PV2D p1 = PV2D(this->center.getPointX()+edge/2, this->center.getPointY()-radius);
+	PV2D p1 = PV2D(this->center.getX()+edge/2, this->center.getY()-radius, 1);
 
 	// Generate the circle
 	vertex.push_back(p1);
@@ -65,9 +65,9 @@ void Circle::drawCircle(){
 
 	glBegin(GL_POLYGON);
 	for (int i=1; i<=numSides; ++i, ++it){
-		glVertex2f(it->getPointX(), it->getPointY());
+		glVertex2f(it->getX(), it->getY());
 	}
-	glVertex2f(this->center.getPointX(), this->center.getPointY());	
+	glVertex2f(this->center.getX(), this->center.getY());	
 	glEnd();
 }
 
@@ -76,8 +76,9 @@ bool Circle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
 	PV2D vectorCP;
 
 	A = v.dot(v);
-	vectorCP.setVectorX(p.getPointX() - this->center.getPointX());
-	vectorCP.setVectorY(p.getPointY() - this->center.getPointY());
+	vectorCP.setX(p.getX() - this->center.getX());
+	vectorCP.setY(p.getY() - this->center.getY());
+	vectorCP.setH(0);
 	B = 2 * vectorCP.dot(v);
 	C = vectorCP.dot(vectorCP) - this->radius2;
 
@@ -90,12 +91,14 @@ bool Circle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
 	}
 
 	PV2D intersection; //Point of intersection
-	intersection.setPointX(p.getPointX() + tIn * v.getVectorX());
-	intersection.setPointY(p.getPointY() + tIn * v.getVectorY());
+	intersection.setX(p.getX() + tIn * v.getX());
+	intersection.setY(p.getY() + tIn * v.getY());
+	intersection.setH(1);
 
 	// Normal vector: from center to intersection point
-	normalIn.setVectorX(intersection.getPointX() - this->center.getPointX());
-	normalIn.setVectorY(intersection.getPointY() - this->center.getPointY());
+	normalIn.setX(intersection.getX() - this->center.getX());
+	normalIn.setY(intersection.getY() - this->center.getY());
+	normalIn.setH(0);
 
 	return true;
 }

@@ -6,7 +6,7 @@
 PV2D::PV2D(){
 	this->x = 0;
 	this->y = 0;
-	this->h = 0;
+	this->h = 1;
 }
 
 PV2D::PV2D(GLfloat x, GLfloat y, GLfloat h){

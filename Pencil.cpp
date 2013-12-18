@@ -37,6 +37,7 @@ void Pencil::turn(GLdouble d){
 void Pencil::forward(GLdouble dist){
 	GLdouble x = dist*cos(this->dir);
 	GLdouble y = dist*sin(this->dir);
-    this->pos.setPointX(pos.getPointX() + x);
-    this->pos.setPointY(pos.getPointY() + y);     
+    this->pos.setX(pos.getX() + x);
+    this->pos.setY(pos.getY() + y);  
+    this->pos.setH(1);   
 }

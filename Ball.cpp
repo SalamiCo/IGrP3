@@ -8,13 +8,13 @@ Ball::Ball(){
 	Pencil pen;
 	GLfloat centerX=0, centerY=0;
 	// Center
-	center = PV2D(centerX, centerY);
+	center = PV2D(centerX, centerY, 1);
 	// Radius
 	radius = 20;
 	numSides = 20;
 	GLfloat edge = 2 * radius * sin(0.157079);
 
-	PV2D p1 = PV2D(centerX+edge/2, centerY-radius);
+	PV2D p1 = PV2D(centerX+edge/2, centerY-radius, 1);
 
 	// Generate the ball
 	vertex.push_back(p1);
@@ -39,8 +39,9 @@ Ball::Ball(){
 		randomX = rand() % 4 - 3;
 		randomY = rand() % 4 - 3;
 	} while (randomX == 0 && randomY == 0);
-	vectorMov.setVectorX((GLfloat) randomX);
-	vectorMov.setVectorY((GLfloat) randomY);
+	vectorMov.setX((GLfloat) randomX);
+	vectorMov.setY((GLfloat) randomY);
+	vectorMov.setH(0);
 	//vectorMov.setVectorX(-2);
 	//vectorMov.setVectorY(-2);
 }
@@ -60,9 +61,9 @@ void Ball::drawBall(){
 	glBegin(GL_POLYGON);
 	for (int i=1; i<=numSides; ++i, ++it){
 		glColor3f(0.0, 1.0, 0.0);
-		glVertex2f(it->getPointX(), it->getPointY());
+		glVertex2f(it->getX(), it->getY());
 	}
-	glVertex2f(center.getPointX(), center.getPointY());	
+	glVertex2f(center.getX(), center.getY());	
 	glEnd();
 }
 
@@ -71,17 +72,20 @@ void Ball::step(double t){
 	it = vertex.begin();
 
 	for(int i=1;i<=numSides; ++i, ++it){
-		it->setPointX(it->getPointX() + t * vectorMov.getVectorX());
-		it->setPointY(it->getPointY() + t * vectorMov.getVectorY());
+		it->setX(it->getX() + t * vectorMov.getX());
+		it->setY(it->getY() + t * vectorMov.getY());
+		it->setH(1);
 	}
-	center.setPointX(center.getPointX() + t * vectorMov.getVectorX());
-	center.setPointY(center.getPointY() + t * vectorMov.getVectorY());
+	center.setX(center.getX() + t * vectorMov.getX());
+	center.setY(center.getY() + t * vectorMov.getY());
+	center.setH(1);
 }
 
 void Ball::rebound(PV2D normal){
 	//r = v - 2an
 	std::vector<GLfloat> ab = vectorMov.vectorDecomposition(vectorMov,normal);
 
-	vectorMov.setVectorX(vectorMov.getVectorX() - 2 * ab.at(0) * normal.getVectorX());
-	vectorMov.setVectorY(vectorMov.getVectorY() - 2 * ab.at(0) * normal.getVectorY());
+	vectorMov.setX(vectorMov.getX() - 2 * ab.at(0) * normal.getX());
+	vectorMov.setY(vectorMov.getY() - 2 * ab.at(0) * normal.getY());
+	vectorMov.setH(0);
 }

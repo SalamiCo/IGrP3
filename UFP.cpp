@@ -40,16 +40,16 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     RatioViewPort=1.0;
 
     // inicialización de las variables del programa
-    tR = new Triangle(PV2D(xRight-30, yTop+20), PV2D(xRight-30, yBot-20), PV2D(xRight+300, yBot-20));
-    tT = new Triangle(PV2D(xLeft-20, yTop-30), PV2D(xRight+20, yTop-30), PV2D(xRight+20, yTop+450));
-    tL = new Triangle(PV2D(xLeft+30, yBot-20), PV2D(xLeft+30, yTop+20), PV2D(xLeft-300, yTop+20));
-    tB = new Triangle(PV2D(xRight+20, yBot+30), PV2D(xLeft-20, yBot+30), PV2D(xLeft-20, yBot-450));
+    tR = new Triangle(PV2D(xRight-30, yTop+20, 1), PV2D(xRight-30, yBot-20, 1), PV2D(xRight+300, yBot-20, 1));
+    tT = new Triangle(PV2D(xLeft-20, yTop-30, 1), PV2D(xRight+20, yTop-30, 1), PV2D(xRight+20, yTop+450, 1));
+    tL = new Triangle(PV2D(xLeft+30, yBot-20, 1), PV2D(xLeft+30, yTop+20, 1), PV2D(xLeft-300, yTop+20, 1));
+    tB = new Triangle(PV2D(xRight+20, yBot+30, 1), PV2D(xLeft-20, yBot+30, 1), PV2D(xLeft-20, yBot-450, 1));
 
-    t1 = new Triangle(PV2D(200, 0), PV2D(200, 200), PV2D(160, 160));
-    t2 = new Triangle(PV2D(-250, 0), PV2D(-250, -150), PV2D(-210, -210));
+    t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
+    t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
-    c1 = new Circle(PV2D(-200, 80), 30);
-    c2 = new Circle(PV2D(250, -90), 30);
+    c1 = new Circle(PV2D(-200, 80, 1), 30);
+    c2 = new Circle(PV2D(250, -90, 1), 30);
 
     obstacles.push_back(tR);
     obstacles.push_back(tT);
