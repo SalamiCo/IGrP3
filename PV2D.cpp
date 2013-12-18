@@ -6,47 +6,41 @@
 PV2D::PV2D(){
 	this->x = 0;
 	this->y = 0;
+	this->h = 0;
 }
 
-PV2D::PV2D(GLfloat x, GLfloat y){
+PV2D::PV2D(GLfloat x, GLfloat y, GLfloat h){
 	this->x = x;
 	this->y = y;
+	this->h = h;
 }
 
-GLfloat PV2D::getPointX(){
+GLfloat PV2D::getX(){
 	return this->x;
 }
 
-GLfloat PV2D::getPointY(){
+GLfloat PV2D::getY(){
 	return this->y;
 }
 
-GLfloat PV2D::getVectorX(){
-	return this->x;
+GLfloat PV2D::getH(){
+	return this->h;
 }
 
-GLfloat PV2D::getVectorY(){
-	return this->y;
-}
-
-void PV2D::setPointX(GLfloat x){
+void PV2D::setX(GLfloat x){
 	this->x = x;
 }
 
-void PV2D::setPointY(GLfloat y){
+void PV2D::setY(GLfloat y){
 	this->y = y;
 }
 
-void PV2D::setVectorX(GLfloat x){
-	this->x = x;
-}
-
-void PV2D::setVectorY(GLfloat y){
-	this->y = y;
+void PV2D::setH(GLfloat h){
+	this->h = h;
 }
 
 GLfloat PV2D::vectorModule(){
-	return sqrt(pow(this->getVectorX(),2) + pow(this->getVectorY(),2));
+	return sqrt(pow(this->getX(),2) + pow(this->getY(),2));
 }
 
 PV2D PV2D::normalizeVector(){
@@ -54,22 +48,24 @@ PV2D PV2D::normalizeVector(){
 	PV2D newV;
 	GLfloat module = this->vectorModule();
 
-	newV.setVectorX((1 / module) * this->getVectorX());
-	newV.setVectorY((1 / module) * this->getVectorY());
+	newV.setX((1 / module) * this->getX());
+	newV.setY((1 / module) * this->getY());
+	newV.setH(0);
 
 	return newV;
 }
 
 GLfloat PV2D::dot(PV2D w){
-	return (this->getVectorX() * w.getVectorX()) + (this->getVectorY() * w.getVectorY());
+	return (this->getX() * w.getX()) + (this->getY() * w.getY());
 }
 
 PV2D PV2D::normalVector(){
 	// Perpendicular vector to v with same module as v. Result by turning v to the left.
 	PV2D normal;
 
-	normal.setVectorX(-this->getVectorY());
-	normal.setVectorY(this->getVectorX());
+	normal.setX(-this->getY());
+	normal.setY(this->getX());
+	normal.setH(0);
 
 	return normal;
 }

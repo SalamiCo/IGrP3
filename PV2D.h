@@ -14,17 +14,16 @@ class PV2D{
     private:
     	GLfloat x;
     	GLfloat y;
+        GLfloat h;
     public:
         PV2D();
-        PV2D(GLfloat x, GLfloat y);
-        GLfloat getPointX();
-        GLfloat getPointY();
-        GLfloat getVectorX();
-        GLfloat getVectorY();
-        void setPointX(GLfloat x);
-        void setPointY(GLfloat y);
-        void setVectorX(GLfloat x);
-        void setVectorY(GLfloat y);
+        PV2D(GLfloat x, GLfloat y, GLfloat h);
+        GLfloat getX();
+        GLfloat getY();
+        GLfloat getH();
+        void setX(GLfloat x);
+        void setY(GLfloat y);
+        void setH(GLfloat h);
         GLfloat vectorModule();
         PV2D normalizeVector();
         GLfloat dot(PV2D w);
