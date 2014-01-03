@@ -48,8 +48,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     //t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
     //t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
-    //c1 = new Circle(PV2D(-200, 80, 1), 30);
-    c2 = new Circle(PV2D(250, -90, 1), 30);
+    c1 = new Circle();
+    c2 = new Circle();
 
     obstacles.push_back(tR);
     obstacles.push_back(tT);
@@ -57,7 +57,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     obstacles.push_back(tB);
     //obstacles.push_back(t1);
     //obstacles.push_back(t2);
-    //obstacles.push_back(c1);
+    obstacles.push_back(c1);
     obstacles.push_back(c2);
 
     //Set timer properties
@@ -123,12 +123,18 @@ void __fastcall TGLForm2D::GLScene()
     Triangle::drawWalls(*tR,*tT,*tL,*tB);
     //Triangle::drawTriangle(t1->getP1(), t1->getP2(), t1->getP3());
     //Triangle::drawTriangle(t2->getP1(), t2->getP2(), t2->getP3());
-    //c1->drawCircle();
 
     glMatrixMode(GL_MODELVIEW);
+
+    glPushMatrix();
+    glTranslatef(-200, 80, 0);
+    glScalef(25.0, 50.0, 1.0);
+    c1->drawCircle();
+    glPopMatrix();
+
     glPushMatrix();
     glTranslatef(250, -90, 0);
-    glScalef(1.5, 1.0, 1.0);
+    glScalef(50.0, 25.0, 1.0);
     c2->drawCircle();
     glPopMatrix();
 

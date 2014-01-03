@@ -6,9 +6,9 @@
 Circle::Circle(){
 	Pencil pen;
 	// Center
-	this->center = PV2D(-50, 100, 1);
+	this->center = PV2D(0, 0, 1);
 	// Radius
-	this->radius = 30;
+	this->radius = 1;
 	this->radius2 = radius*radius;
 
 	numSides = 20;
@@ -34,7 +34,7 @@ Circle::Circle(){
 Circle::Circle(PV2D center, GLfloat radius){
 	Pencil pen;
 	// Center
-	this->center = PV2D(0, 0, 1);
+	this->center = center;
 	// Radius
 	this->radius = radius;
 	this->radius2 = radius*radius;
