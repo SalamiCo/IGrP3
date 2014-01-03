@@ -45,19 +45,19 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     tL = new Triangle(PV2D(xLeft+30, yBot-20, 1), PV2D(xLeft+30, yTop+20, 1), PV2D(xLeft-300, yTop+20, 1));
     tB = new Triangle(PV2D(xRight+20, yBot+30, 1), PV2D(xLeft-20, yBot+30, 1), PV2D(xLeft-20, yBot-450, 1));
 
-    t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
-    t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
+    //t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
+    //t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
-    c1 = new Circle(PV2D(-200, 80, 1), 30);
+    //c1 = new Circle(PV2D(-200, 80, 1), 30);
     c2 = new Circle(PV2D(250, -90, 1), 30);
 
     obstacles.push_back(tR);
     obstacles.push_back(tT);
     obstacles.push_back(tL);
     obstacles.push_back(tB);
-    obstacles.push_back(t1);
-    obstacles.push_back(t2);
-    obstacles.push_back(c1);
+    //obstacles.push_back(t1);
+    //obstacles.push_back(t2);
+    //obstacles.push_back(c1);
     obstacles.push_back(c2);
 
     //Set timer properties
@@ -117,14 +117,20 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 void __fastcall TGLForm2D::GLScene()
-{
+{    
     glClear(GL_COLOR_BUFFER_BIT);
 
     Triangle::drawWalls(*tR,*tT,*tL,*tB);
-    Triangle::drawTriangle(t1->getP1(), t1->getP2(), t1->getP3());
-    Triangle::drawTriangle(t2->getP1(), t2->getP2(), t2->getP3());
-    c1->drawCircle();
+    //Triangle::drawTriangle(t1->getP1(), t1->getP2(), t1->getP3());
+    //Triangle::drawTriangle(t2->getP1(), t2->getP2(), t2->getP3());
+    //c1->drawCircle();
+
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glTranslatef(250, -90, 0);
+    glScalef(1.5, 1.0, 1.0);
     c2->drawCircle();
+    glPopMatrix();
 
     ball.drawBall();
 

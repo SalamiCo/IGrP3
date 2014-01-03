@@ -34,7 +34,7 @@ Circle::Circle(){
 Circle::Circle(PV2D center, GLfloat radius){
 	Pencil pen;
 	// Center
-	this->center = center;
+	this->center = PV2D(0, 0, 1);
 	// Radius
 	this->radius = radius;
 	this->radius2 = radius*radius;
@@ -67,8 +67,9 @@ void Circle::drawCircle(){
 	for (int i=1; i<=numSides; ++i, ++it){
 		glVertex2f(it->getX(), it->getY());
 	}
-	glVertex2f(this->center.getX(), this->center.getY());	
+	//glVertex2f(this->center.getX(), this->center.getY());	
 	glEnd();
+	
 }
 
 bool Circle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
