@@ -10,7 +10,7 @@ Ball::Ball(){
 	// Center
 	center = PV2D(centerX, centerY, 1);
 	// Radius
-	radius = 20;
+	radius = 1;
 	numSides = 20;
 	GLfloat edge = 2 * radius * sin(0.157079);
 
@@ -32,7 +32,7 @@ Ball::Ball(){
 
 	// Movement vector
 	int randomX, randomY;
-	do{
+	/*do{
 		// initialize random seed
 	  	srand (time(NULL));
 	  	// Random number between -4 and 4 (creo...)
@@ -41,9 +41,9 @@ Ball::Ball(){
 	} while (randomX == 0 && randomY == 0);
 	vectorMov.setX((GLfloat) randomX);
 	vectorMov.setY((GLfloat) randomY);
-	vectorMov.setH(0);
-	//vectorMov.setVectorX(-2);
-	//vectorMov.setVectorY(-2);
+	vectorMov.setH(0);*/
+	vectorMov.setX(0);
+	vectorMov.setY(-2);
 }
 
 PV2D Ball::getCenter(){
@@ -58,24 +58,30 @@ void Ball::drawBall(){
 	std::vector<PV2D>::iterator it;
 	it = vertex.begin();
 
+	glPushMatrix();
+	glTranslatef(center.getX(), center.getY(), 0);
+    glScalef(15.0, 15.0, 1.0);
+
 	glBegin(GL_POLYGON);
 	for (int i=1; i<=numSides; ++i, ++it){
 		glColor3f(0.0, 1.0, 0.0);
 		glVertex2f(it->getX(), it->getY());
 	}
-	glVertex2f(center.getX(), center.getY());	
+	//glVertex2f(center.getX(), center.getY());	
 	glEnd();
+
+	glPopMatrix();
 }
 
 void Ball::step(double t){
 	std::vector<PV2D>::iterator it;
 	it = vertex.begin();
 
-	for(int i=1;i<=numSides; ++i, ++it){
+	/*for(int i=1;i<=numSides; ++i, ++it){
 		it->setX(it->getX() + t * vectorMov.getX());
 		it->setY(it->getY() + t * vectorMov.getY());
 		it->setH(1);
-	}
+	}*/
 	center.setX(center.getX() + t * vectorMov.getX());
 	center.setY(center.getY() + t * vectorMov.getY());
 	center.setH(1);

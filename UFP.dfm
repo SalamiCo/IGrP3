@@ -3,7 +3,7 @@ object GLForm2D: TGLForm2D
   Top = 165
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'IGrP2'
+  Caption = 'IGrP3'
   ClientHeight = 496
   ClientWidth = 800
   Color = clBtnFace

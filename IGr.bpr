@@ -4,7 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="IGr.exe"/>
-    <OBJFILES value="Main.obj UFP.obj Ball.obj Pencil.obj PV2D.obj Triangle.obj Circle.obj"/>
+    <OBJFILES value="Main.obj UFP.obj Ball.obj Pencil.obj PV2D.obj Triangle.obj Circle.obj 
+      Ellipse.obj"/>
     <RESFILES value="IGr.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) UFP.dfm"/>
@@ -25,8 +26,8 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
     <MAINSOURCE value="Main.cpp"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="..\IGrP2;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\IGrP2;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
   </MACROS>
   <OPTIONS>

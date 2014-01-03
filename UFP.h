@@ -18,6 +18,7 @@
 #include "Ball.h"
 #include "Triangle.h"
 #include "Circle.h"
+#include "Ellipse.h"
 
 //---------------------------------------------------------------------------
 class TGLForm2D : public TForm
@@ -46,6 +47,7 @@ class TGLForm2D : public TForm
 		std::vector<Obstacle*> obstacles;
 		//Circles
 		Circle *c1, *c2;
+		Ellipse *e1;
 
  		void __fastcall SetPixelFormatDescriptor();
  		void __fastcall GLScene();

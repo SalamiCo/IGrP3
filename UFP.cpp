@@ -48,7 +48,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     //t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
     //t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
-    c1 = new Circle();
+    e1 = new Ellipse();
+    //c1 = new Circle();
     c2 = new Circle();
 
     obstacles.push_back(tR);
@@ -57,7 +58,7 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     obstacles.push_back(tB);
     //obstacles.push_back(t1);
     //obstacles.push_back(t2);
-    obstacles.push_back(c1);
+    obstacles.push_back(e1);
     obstacles.push_back(c2);
 
     //Set timer properties
@@ -129,7 +130,7 @@ void __fastcall TGLForm2D::GLScene()
     glPushMatrix();
     glTranslatef(-200, 80, 0);
     glScalef(25.0, 50.0, 1.0);
-    c1->drawCircle();
+    e1->drawEllipse();
     glPopMatrix();
 
     glPushMatrix();
@@ -218,7 +219,7 @@ void TGLForm2D::Step(){
     double tIn, tHitMin=vectorMov.vectorModule() + 0.2;
     bool exito = false;
 
-    for(int i = 0; i <= 7; i++){
+    for(int i = 0; i < obstacles.size(); i++){
         if(obstacles[i]->intersection2Ball(ball.getCenter(), vectorMov.normalizeVector(), tIn, normalIn)){
             if(tIn>0 && tIn<=(1*vectorMov.vectorModule()+0.01)){
                 if(tIn < tHitMin){
