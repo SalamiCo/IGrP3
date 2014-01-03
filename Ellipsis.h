@@ -1,17 +1,17 @@
 //Samuel Méndez Galán
 //Pedro Morgado Alarcón
 
-#ifndef ELLIPSEH
-#define ELLIPSEH
+#ifndef EllipsisH
+#define EllipsisH
 
 #include "Circle.h" 
 
-class Ellipse : public Obstacle {
+class Ellipsis : public Obstacle {
 	private:
 		Circle circle;
 	public:
-		Ellipse();
-		void drawEllipse();
+		Ellipsis();
+		void drawEllipsis();
 
 		virtual bool intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn);
 };

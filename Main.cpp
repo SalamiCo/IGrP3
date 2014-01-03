@@ -11,7 +11,7 @@ USE("Pencil.h", File);
 USEUNIT("PV2D.cpp");
 USEUNIT("Triangle.cpp");
 USEUNIT("Circle.cpp");
-USEUNIT("Ellipse.cpp");
+USEUNIT("Ellipsis.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
