@@ -48,9 +48,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     //t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
     //t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
-    //e1 = new Ellipsis();
-    c1 = new Circle();
-    c2 = new Circle();
+    e1 = new Ellipsis();
+    e2 = new Ellipsis();
 
     obstacles.push_back(tR);
     obstacles.push_back(tT);
@@ -58,8 +57,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     obstacles.push_back(tB);
     //obstacles.push_back(t1);
     //obstacles.push_back(t2);
-    obstacles.push_back(c1);
-    obstacles.push_back(c2);
+    obstacles.push_back(e1);
+    obstacles.push_back(e2);
 
     //Set timer properties
     Timer->Enabled = false;
@@ -130,14 +129,13 @@ void __fastcall TGLForm2D::GLScene()
     glPushMatrix();
     glTranslatef(-200, 80, 0);
     glScalef(25.0, 50.0, 1.0);
-    //e1->drawEllipsis();
-    c1->drawCircle();
+    e1->drawEllipsis();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(250, -90, 0);
     glScalef(50.0, 25.0, 1.0);
-    c2->drawCircle();
+    e2->drawEllipsis();
     glPopMatrix();
 
     ball.drawBall();

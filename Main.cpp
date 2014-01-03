@@ -12,6 +12,7 @@ USEUNIT("PV2D.cpp");
 USEUNIT("Triangle.cpp");
 USEUNIT("Circle.cpp");
 USEUNIT("Ellipsis.cpp");
+USEUNIT("Matr.cpp");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

@@ -5,7 +5,7 @@
     <VERSION value="BCB.05.03"/>
     <PROJECT value="IGr.exe"/>
     <OBJFILES value="Main.obj UFP.obj Ball.obj Pencil.obj PV2D.obj Triangle.obj Circle.obj 
-      Ellipsis.obj"/>
+      Ellipsis.obj Matr.obj"/>
     <RESFILES value="IGr.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) UFP.dfm"/>
