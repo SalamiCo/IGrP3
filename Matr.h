@@ -4,7 +4,8 @@
 #ifndef MATRH
 #define MATRH
 
-#include <array>
+#include "PV2D.h"
+
 #define WIDTH 3
 #define HEIGHT 3
 

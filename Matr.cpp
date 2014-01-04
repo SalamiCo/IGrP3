@@ -1,5 +1,6 @@
 //Samuel Méndez Galán
 //Pedro Morgado Alarcón
+#include "Matr.h"
 
 Matr::Matr(){
 	// Identity  Matrix
@@ -19,9 +20,9 @@ Matr Matr::prodMatr(Matr m2){
 
 	for(int i=0; i<WIDTH; i++){
 		for(int j=0; j<HEIGHT; j++){
-			m3[i][j]= 0.0;
+			m3.data[i][j]= 0.0;
 			for(int k=0; k<WIDTH; k++){
-				m3[i][j] += this.data[i][k] * m2[k][j];
+				m3.data[i][j] += this->data[i][k] * m2.data[k][j];
 			}
 		}
 	}
@@ -36,7 +37,7 @@ PV2D Matr::prodVect(PV2D vect){
 	for(int i=0; i<WIDTH; i++){
 		vectResult[i] = 0.0;
 		for (int k=0; k<WIDTH; k++){
-			vectResult[i] += this.data[i][k] * vectArray[k];
+			vectResult[i] += this->data[i][k] * vectArray[k];
 		}
 	} 
 

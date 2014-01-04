@@ -42,7 +42,7 @@ Ball::Ball(){
 	vectorMov.setX((GLfloat) randomX);
 	vectorMov.setY((GLfloat) randomY);
 	vectorMov.setH(0);*/
-	vectorMov.setX(0);
+	vectorMov.setX(1);
 	vectorMov.setY(-2);
 }
 
@@ -67,15 +67,20 @@ void Ball::drawBall(){
 		glColor3f(0.0, 1.0, 0.0);
 		glVertex2f(it->getX(), it->getY());
 	}
-	//glVertex2f(center.getX(), center.getY());	
+	glEnd();
+	//The line for movement. From center to right edge
+	glBegin(GL_LINES);
+	glColor3f(1.0, 0.0, 0.0);
+	glVertex2f(center.getX(), center.getY());
+	glVertex2f(center.getX()+radius, center.getY());
 	glEnd();
 
 	glPopMatrix();
 }
 
 void Ball::step(double t){
-	std::vector<PV2D>::iterator it;
-	it = vertex.begin();
+	//std::vector<PV2D>::iterator it;
+	//it = vertex.begin();
 
 	/*for(int i=1;i<=numSides; ++i, ++it){
 		it->setX(it->getX() + t * vectorMov.getX());
