@@ -28,7 +28,7 @@ bool Ellipsis::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
 	Matr scale = Matr::getScaleMatr(1/fx, 1/fy);
 	Matr translate = Matr::getTranslateMatr(tx, ty);
 
-	PV2D pos = (translate.prodMatr(scale)).prodVect(p);
+	PV2D pos = (scale.prodMatr(translate)).prodVect(p);
 	PV2D vel = scale.prodVect(v);
 
 	return circle.intersection2Ball(pos,vel,tIn,normalIn);
