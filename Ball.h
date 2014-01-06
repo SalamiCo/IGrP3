@@ -23,10 +23,14 @@ class Ball{
     	GLfloat radius;
     	PV2D center;
     	PV2D vectorMov;
+        double angle;
+        int dir;
     public:
         Ball();
         PV2D getCenter();
         PV2D getV();
+        int getDir();
+        void setDir(int dir);
         void drawBall();
         void step(double t);
         void rebound(PV2D normal);

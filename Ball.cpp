@@ -16,6 +16,12 @@ Ball::Ball(){
 
 	PV2D p1 = PV2D(centerX+edge/2, centerY-radius, 1);
 
+	// Angle
+	angle = 0.0;
+
+	// Dir
+	dir = 0;
+
 	// Generate the ball
 	vertex.push_back(p1);
 	pen.setPos(p1);
@@ -54,6 +60,14 @@ PV2D Ball::getV(){
 	return this->vectorMov;
 }
 
+int Ball::getDir(){
+	return this->dir;
+}
+
+void Ball::setDir(int dir){
+	this->dir = dir;
+}
+
 void Ball::drawBall(){
 	std::vector<PV2D>::iterator it;
 	it = vertex.begin();
@@ -61,6 +75,7 @@ void Ball::drawBall(){
 	glPushMatrix();
 	glTranslatef(center.getX(), center.getY(), 0);
     glScalef(15.0, 15.0, 1.0);
+    glRotatef(angle, 0.0, 0.0, 1.0);
 
 	glBegin(GL_POLYGON);
 	for (int i=1; i<=numSides; ++i, ++it){
@@ -89,9 +104,19 @@ void Ball::step(double t){
 		it->setY(it->getY() + t * vectorMov.getY());
 		it->setH(1);
 	}*/
+
+	//Set center
 	center.setX(center.getX() + t * vectorMov.getX());
 	center.setY(center.getY() + t * vectorMov.getY());
 	center.setH(1);
+
+	//Set angle
+	if(dir == 0){
+		angle += 1;
+	} else {
+		angle -= 1;
+	}
+	
 }
 
 void Ball::rebound(PV2D normal){

@@ -232,7 +232,14 @@ void TGLForm2D::Step(){
 
     if(exito){
         ball.step(tHitMin);
-        ball.rebound(normalHit);  
+        ball.rebound(normalHit);
+
+        //Set ball dir
+        if(ball.getDir() == 0){
+            ball.setDir(1);
+        } else {
+            ball.setDir(0);
+        }
     } else {
         ball.step(1.0);
     }
