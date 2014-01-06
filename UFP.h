@@ -34,10 +34,10 @@ class TGLForm2D : public TForm
 	private:	// User declarations
  		HDC hdc;
  		HGLRC hrc;
- 		GLfloat xLeft,xRight,yTop,yBot;
- 		GLfloat RatioViewPort;
+ 		GLdouble xLeft,xRight,yTop,yBot;
+ 		GLdouble RatioViewPort;
  		//Center of the scene
-		GLfloat centerX, centerY;
+		GLdouble centerX, centerY;
 		// Ball
 		Ball ball;
 		//Walls

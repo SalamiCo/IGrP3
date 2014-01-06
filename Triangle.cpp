@@ -103,7 +103,7 @@ void Triangle::drawWalls(Triangle tR, Triangle tT, Triangle tL, Triangle tB){
 }
 
 bool Triangle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
-	GLfloat dist[3], proj[3], sign[3];
+	GLdouble dist[3], proj[3], sign[3];
 	//Compute the vectors dist, proj and sign
 	for(int i=0; i<3; i++){
 		PV2D w;
@@ -175,7 +175,7 @@ PV2D Triangle::vectorFromCenter(PV2D p){
 
 PV2D Triangle::triangleCenter(PV2D p1, PV2D p2, PV2D p3){
 	PV2D center;
-	GLfloat sumX, sumY;
+	GLdouble sumX, sumY;
 
 	sumX = (p1.getX() + p2.getX() + p3.getX())/3;
 	sumY = (p1.getY() + p2.getY() + p3.getY())/3;

@@ -5,13 +5,15 @@
 #define EllipsisH
 
 #include "Circle.h" 
+#include "Matr.h"
 
 class Ellipsis : public Obstacle {
 	private:
 		Circle circle;
+		float tx, ty, fx, fy;
 	public:
-		Ellipsis();
-		void drawEllipsis();
+		Ellipsis(float tx, float ty, float fx, float fy); // t->translate f->scale
+		void drawEllipsis(); 
 
 		virtual bool intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn);
 };

@@ -15,6 +15,14 @@ Matr::Matr(){
 	}
 }
 
+Matr::Matr(float data[WIDTH][HEIGHT]){
+	for(int i=0; i<WIDTH; i++){
+		for(int j=0; j<HEIGHT; j++){
+			this->data[i][j] = data[i][j];
+		}
+	}
+}
+
 Matr Matr::prodMatr(Matr m2){
 	Matr m3;
 
@@ -42,5 +50,19 @@ PV2D Matr::prodVect(PV2D vect){
 	} 
 
 	return PV2D(vectResult[0], vectResult[1], vectResult[2]);
+}
+
+Matr Matr::getScaleMatr(float fx, float fy){
+	float data[3][3] = {fx, 0.0, 0.0, 
+						0.0, fy, 0.0, 
+						0.0, 0.0, 1.0};
+	return Matr(data);
+}
+
+Matr Matr::getTranslateMatr(float tx, float ty){
+	float data[3][3] = {1.0, 0.0, tx,
+						0.0, 1.0, ty, 
+						0.0, 0.0, 1.0};
+	return Matr(data);
 }
  

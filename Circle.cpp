@@ -12,7 +12,7 @@ Circle::Circle(){
 	this->radius2 = radius*radius;
 
 	numSides = 20;
-	GLfloat edge = 2 * radius * sin(0.157079);
+	GLdouble edge = 2 * radius * sin(0.157079);
 
 	PV2D p1 = PV2D(this->center.getX()+edge/2, this->center.getY()-radius, 1);
 
@@ -31,7 +31,7 @@ Circle::Circle(){
 	}
 }
 
-Circle::Circle(PV2D center, GLfloat radius){
+Circle::Circle(PV2D center, GLdouble radius){
 	Pencil pen;
 	// Center
 	this->center = center;
@@ -40,7 +40,7 @@ Circle::Circle(PV2D center, GLfloat radius){
 	this->radius2 = radius*radius;
 
 	numSides = 20;
-	GLfloat edge = 2 * radius * sin(0.157079);
+	GLdouble edge = 2 * radius * sin(0.157079);
 
 	PV2D p1 = PV2D(this->center.getX()+edge/2, this->center.getY()-radius, 1);
 
@@ -73,7 +73,7 @@ void Circle::drawCircle(){
 }
 
 bool Circle::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
-	GLfloat A,B,C, delta;
+	GLdouble A,B,C, delta;
 	PV2D vectorCP;
 
 	A = v.dot(v);
