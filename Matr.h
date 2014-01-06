@@ -14,8 +14,11 @@ class Matr {
 		float data [WIDTH][HEIGHT];
 	public:
 		Matr();
+		Matr(float data[WIDTH][HEIGHT]);
 		Matr prodMatr(Matr m2);
 		PV2D prodVect(PV2D vect);
+		Matr static getScaleMatr(float fx, float fy);
+		Matr static getTranslateMatr(float tx, float ty);
 
 };
 

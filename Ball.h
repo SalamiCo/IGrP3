@@ -20,7 +20,7 @@ class Ball{
     private:
     	std::vector<PV2D> vertex;
     	int numSides;
-    	GLfloat radius;
+    	GLdouble radius;
     	PV2D center;
     	PV2D vectorMov;
         double angle;

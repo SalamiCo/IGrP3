@@ -9,44 +9,44 @@ PV2D::PV2D(){
 	this->h = 1;
 }
 
-PV2D::PV2D(GLfloat x, GLfloat y, GLfloat h){
+PV2D::PV2D(GLdouble x, GLdouble y, GLdouble h){
 	this->x = x;
 	this->y = y;
 	this->h = h;
 }
 
-GLfloat PV2D::getX(){
+GLdouble PV2D::getX(){
 	return this->x;
 }
 
-GLfloat PV2D::getY(){
+GLdouble PV2D::getY(){
 	return this->y;
 }
 
-GLfloat PV2D::getH(){
+GLdouble PV2D::getH(){
 	return this->h;
 }
 
-void PV2D::setX(GLfloat x){
+void PV2D::setX(GLdouble x){
 	this->x = x;
 }
 
-void PV2D::setY(GLfloat y){
+void PV2D::setY(GLdouble y){
 	this->y = y;
 }
 
-void PV2D::setH(GLfloat h){
+void PV2D::setH(GLdouble h){
 	this->h = h;
 }
 
-GLfloat PV2D::vectorModule(){
+GLdouble PV2D::vectorModule(){
 	return sqrt(pow(this->getX(),2) + pow(this->getY(),2));
 }
 
 PV2D PV2D::normalizeVector(){
 	// Same direction but module = 1
 	PV2D newV;
-	GLfloat module = this->vectorModule();
+	GLdouble module = this->vectorModule();
 
 	newV.setX((1 / module) * this->getX());
 	newV.setY((1 / module) * this->getY());
@@ -55,7 +55,7 @@ PV2D PV2D::normalizeVector(){
 	return newV;
 }
 
-GLfloat PV2D::dot(PV2D w){
+GLdouble PV2D::dot(PV2D w){
 	return (this->getX() * w.getX()) + (this->getY() * w.getY());
 }
 
@@ -70,9 +70,9 @@ PV2D PV2D::normalVector(){
 	return normal;
 }
 
-std::vector<GLfloat> PV2D::vectorDecomposition(PV2D v, PV2D n){
-	GLfloat a, b;
-	std::vector<GLfloat> numbers;
+std::vector<GLdouble> PV2D::vectorDecomposition(PV2D v, PV2D n){
+	GLdouble a, b;
+	std::vector<GLdouble> numbers;
 
 	a = v.dot(n) / n.dot(n);
 	numbers.push_back(a);

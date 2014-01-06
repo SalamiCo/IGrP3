@@ -6,13 +6,13 @@
 Ball::Ball(){
 	// To calculate the edge size using radius => edge = 2 * radius * sin(0.157079)
 	Pencil pen;
-	GLfloat centerX=0, centerY=0;
+	GLdouble centerX=0, centerY=0;
 	// Center
 	center = PV2D(centerX, centerY, 1);
 	// Radius
 	radius = 1;
 	numSides = 20;
-	GLfloat edge = 2 * radius * sin(0.157079);
+	GLdouble edge = 2 * radius * sin(0.157079);
 
 	PV2D p1 = PV2D(centerX+edge/2, centerY-radius, 1);
 
@@ -45,8 +45,8 @@ Ball::Ball(){
 		randomX = rand() % 4 - 3;
 		randomY = rand() % 4 - 3;
 	} while (randomX == 0 && randomY == 0);
-	vectorMov.setX((GLfloat) randomX);
-	vectorMov.setY((GLfloat) randomY);
+	vectorMov.setX((GLdouble) randomX);
+	vectorMov.setY((GLdouble) randomY);
 	vectorMov.setH(0);*/
 	vectorMov.setX(1);
 	vectorMov.setY(-2);
@@ -121,7 +121,7 @@ void Ball::step(double t){
 
 void Ball::rebound(PV2D normal){
 	//r = v - 2an
-	std::vector<GLfloat> ab = vectorMov.vectorDecomposition(vectorMov,normal);
+	std::vector<GLdouble> ab = vectorMov.vectorDecomposition(vectorMov,normal);
 
 	vectorMov.setX(vectorMov.getX() - 2 * ab.at(0) * normal.getX());
 	vectorMov.setY(vectorMov.getY() - 2 * ab.at(0) * normal.getY());

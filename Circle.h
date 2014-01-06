@@ -11,12 +11,12 @@
 class Circle : public Obstacle {
 	private:
 		PV2D center;
-		GLfloat radius, radius2; // r and r^2
+		GLdouble radius, radius2; // r and r^2
 		std::vector<PV2D> vertex;
 		int numSides;
 	public:
 		Circle();
-		Circle(PV2D center, GLfloat radius);
+		Circle(PV2D center, GLdouble radius);
 		void drawCircle();
 
 		virtual bool intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn);
