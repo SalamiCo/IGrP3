@@ -110,8 +110,8 @@ void __fastcall TGLForm2D::FormResize(TObject *Sender)
     gluOrtho2D(xLeft,xRight,yBot,yTop);
 
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    /*glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();*/
     GLScene();
 
 }
@@ -191,13 +191,13 @@ void __fastcall TGLForm2D::FormKeyPress(TObject *Sender, char &Key)
             break;
     };
 
-    glMatrixMode(GL_PROJECTION);
+    /*glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(xLeft,xRight,yBot,yTop);
 
     glMatrixMode(GL_MODELVIEW);
+    gluOrtho2D(xLeft,xRight,yBot,yTop);
     glLoadIdentity();
-    GLScene();
+    GLScene();*/
 }
 //---------------------------------------------------------------------------
 
@@ -237,12 +237,12 @@ void TGLForm2D::Step(){
         ball.step(1.0);
     }
 
-    glMatrixMode(GL_PROJECTION);
+    /*glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(xLeft,xRight,yBot,yTop);
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    /*glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();*/
     GLScene();
 
 }

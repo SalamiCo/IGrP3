@@ -69,10 +69,12 @@ void Ball::drawBall(){
 	}
 	glEnd();
 	//The line for movement. From center to right edge
+	glColor3f(0.0, 0.0, 1.0);
 	glBegin(GL_LINES);
-	glColor3f(1.0, 0.0, 0.0);
-	glVertex2f(center.getX(), center.getY());
-	glVertex2f(center.getX()+radius, center.getY());
+	//glVertex2f(center.getX(), center.getY());
+	//glVertex2f(center.getX()+radius, center.getY());
+	glVertex2f(0, 0);
+	glVertex2f(1, 0);
 	glEnd();
 
 	glPopMatrix();
