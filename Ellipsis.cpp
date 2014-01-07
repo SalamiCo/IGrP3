@@ -31,5 +31,12 @@ bool Ellipsis::intersection2Ball(PV2D p, PV2D v, double& tIn, PV2D& normalIn){
 	PV2D pos = (scale.prodMatr(translate)).prodVect(p);
 	PV2D vel = scale.prodVect(v);
 
-	return circle.intersection2Ball(pos,vel,tIn,normalIn);
+	bool exito = circle.intersection2Ball(pos,vel,tIn,normalIn);
+
+	if(!exito){
+		return false;
+	}
+
+	normalIn = (scale.getTrasposedMatr()).prodVect(normalIn);
+	return true;
 }

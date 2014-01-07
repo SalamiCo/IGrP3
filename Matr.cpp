@@ -65,4 +65,14 @@ Matr Matr::getTranslateMatr(float tx, float ty){
 						0.0, 0.0, 1.0};
 	return Matr(data);
 }
+
+Matr Matr::getTrasposedMatr(){
+	Matr result;
+	for (int i = 0; i < WIDTH; i++){
+        for (int j = 0; j < HEIGHT; j++){
+            result.data[j][i] = this->data[i][j];
+        }
+    }
+    return result;
+}
  
