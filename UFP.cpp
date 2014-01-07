@@ -45,8 +45,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     tL = new Triangle(PV2D(xLeft+30, yBot-20, 1), PV2D(xLeft+30, yTop+20, 1), PV2D(xLeft-300, yTop+20, 1));
     tB = new Triangle(PV2D(xRight+20, yBot+30, 1), PV2D(xLeft-20, yBot+30, 1), PV2D(xLeft-20, yBot-450, 1));
 
-    //t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
-    //t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
+    t1 = new Triangle(PV2D(200, 0, 1), PV2D(200, 200, 1), PV2D(160, 160, 1));
+    t2 = new Triangle(PV2D(-250, 0, 1), PV2D(-250, -150, 1), PV2D(-210, -210, 1));
 
     e1 = new Ellipsis(-200, 80, 25, 50);
     e2 = new Ellipsis(250, -90, 50, 25);
@@ -55,8 +55,8 @@ void __fastcall TGLForm2D::FormCreate(TObject *Sender)
     obstacles.push_back(tT);
     obstacles.push_back(tL);
     obstacles.push_back(tB);
-    //obstacles.push_back(t1);
-    //obstacles.push_back(t2);
+    obstacles.push_back(t1);
+    obstacles.push_back(t2);
     obstacles.push_back(e1);
     obstacles.push_back(e2);
 
@@ -121,8 +121,8 @@ void __fastcall TGLForm2D::GLScene()
     glClear(GL_COLOR_BUFFER_BIT);
 
     Triangle::drawWalls(*tR,*tT,*tL,*tB);
-    //Triangle::drawTriangle(t1->getP1(), t1->getP2(), t1->getP3());
-    //Triangle::drawTriangle(t2->getP1(), t2->getP2(), t2->getP3());
+    Triangle::drawTriangle(t1->getP1(), t1->getP2(), t1->getP3());
+    Triangle::drawTriangle(t2->getP1(), t2->getP2(), t2->getP3());
 
     glMatrixMode(GL_MODELVIEW);
 
